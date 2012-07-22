@@ -1,6 +1,6 @@
 from setuptools import setup, Extension
 import os
-repo_path = "%s/app-root/repo/" % os.ENVIRON['HOME']
+repo_path = "%s/app-root/repo/" % os.environ['HOME']
 
 setup(name='gdbflee',
       version='0.1',
