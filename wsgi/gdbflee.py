@@ -12,7 +12,6 @@ ALLOWED_EXTENSIONS = set(['zip'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.debug = True
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -45,10 +44,7 @@ def upload_file():
                     gdb_name = os.path.splitext(gdb)[0]
                     gdb_location = os.path.join(gdb_path, gdb)
                     fgdb.convert(gdb_location, gdb_name, format, out_path)
-            try:
-                os.mkdir(static + '/output/' + store_key)
-            except Exception as e:
-                return e.strerror + "\n" + os.getcwd()
+            os.mkdir(static + '/output/' + store_key)
             out_zip = zipfile.ZipFile('%s/output/%s/out.zip' % (static, store_key), 'w')
             for root, dirs, files in os.walk(out_path):
                 for a_file in files:
