@@ -60,7 +60,7 @@ def upload_file():
             return '''
             <!doctype html>
             <title>All Done</title>
-            <h1><a href=\"/static/output/%s/out.zip\">Your data has been freed!</a></h1>
+            <h1><a href=\"/static/output/%s/out.zip\">Your data has fled!</a></h1>
             <br />
             <br />
             <a href=\"/\">Free some more data</a>
@@ -73,8 +73,8 @@ def upload_file():
             
     return '''
     <!doctype html>
-    <title>Upload a zipped File Geodatabase to free</title>
-    <h1>Upload a zipped File Geodatabase to free</h1>
+    <title>Your data wants out</title>
+    <h1>Upload a zipped File Geodatabase. Your data wants to flee.</h1>
     <form action="" method=post enctype=multipart/form-data>
       <p><input type=file name=file>
       <br />
