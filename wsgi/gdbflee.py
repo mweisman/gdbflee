@@ -26,6 +26,7 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             path = os.path.join(app.config['UPLOAD_FOLDER'], store_key)
+            return path
             tmp_path = os.path.join(app.config['UPLOAD_FOLDER'], store_key, "tmp")
             gdb_path = os.path.join(app.config['UPLOAD_FOLDER'], store_key, "in")
             out_path = os.path.join(app.config['UPLOAD_FOLDER'], store_key, "out")
