@@ -6,7 +6,7 @@ from uuid import uuid1
 from werkzeug import secure_filename
 import json, fgdb, os, zipfile, glob
 
-UPLOAD_FOLDER = os.environ['HOME'] + 'app-root/data/tmp'
+UPLOAD_FOLDER = os.environ['HOME'] + '/app-root/data/tmp'
 ALLOWED_EXTENSIONS = set(['zip'])
 
 app = Flask(__name__)
@@ -26,7 +26,6 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             path = os.path.join(app.config['UPLOAD_FOLDER'], store_key)
-            return path
             tmp_path = os.path.join(app.config['UPLOAD_FOLDER'], store_key, "tmp")
             gdb_path = os.path.join(app.config['UPLOAD_FOLDER'], store_key, "in")
             out_path = os.path.join(app.config['UPLOAD_FOLDER'], store_key, "out")
