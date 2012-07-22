@@ -6,8 +6,7 @@ from uuid import uuid1
 from werkzeug import secure_filename
 import json, fgdb, os, zipfile, glob
 
-data_dir = "tmp"
-UPLOAD_FOLDER = 'tmp'
+UPLOAD_FOLDER = os.environ['HOME'] + 'app-root/data/tmp'
 ALLOWED_EXTENSIONS = set(['zip'])
 
 app = Flask(__name__)
