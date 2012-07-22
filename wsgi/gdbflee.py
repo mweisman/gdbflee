@@ -47,7 +47,7 @@ def upload_file():
             try:
                 os.mkdir('static/output/%s' % store_key)
             except Exception as e:
-                return e.strerror, os.getcwd()
+                return e.strerror + "\n" + os.getcwd()
             out_zip = zipfile.ZipFile('static/output/%s/out.zip' % store_key, 'w')
             for root, dirs, files in os.walk(out_path):
                 for a_file in files:
