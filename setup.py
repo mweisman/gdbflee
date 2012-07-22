@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, Extension
 
 setup(name='gdbflee',
       version='0.1',
