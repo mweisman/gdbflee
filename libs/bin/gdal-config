@@ -1,0 +1,68 @@
+#!/bin/sh
+CONFIG_LIBS="-L/var/lib/stickshift/c232f75b87584eda9342f47cb1c89cde/app-root/repo/data/lib -lgdal"
+CONFIG_DEP_LIBS="  -lsqlite3 -lexpat -ljasper -lgif -ljpeg -lpng -L/usr/lib64 -lpq -lz -lpthread -lm -lrt -ldl    -lcurl            -L/var/lib/stickshift/c232f75b87584eda9342f47cb1c89cde/app-root/data/gdb//lib -lFileGDBAPI "
+CONFIG_PREFIX="/var/lib/stickshift/c232f75b87584eda9342f47cb1c89cde/app-root/repo/data"
+CONFIG_CFLAGS="-I/var/lib/stickshift/c232f75b87584eda9342f47cb1c89cde/app-root/repo/data/include"
+CONFIG_DATA="/var/lib/stickshift/c232f75b87584eda9342f47cb1c89cde/app-root/repo/data/share/gdal"
+CONFIG_VERSION="1.9.1"
+CONFIG_OGR_ENABLED=yes
+CONFIG_FORMATS="gxf gtiff hfa aigrid aaigrid ceos ceos2 iso8211 xpm sdts raw dted mem jdem envisat elas fit vrt usgsdem l1b nitf bmp pcidsk airsar rs2 ilwis rmf leveller sgi srtmhgt idrisi gsg ingr ers jaxapalsar dimap gff cosar pds adrg coasp tsx terragen blx msgn til r northwood saga xyz hf2 kmlsuperoverlay ozi ctg e00grid zmap ngsgeoid wcs wms grib bsb jpeg2000 gif jpeg png pcraster  rik rasterlite postgisraster"
+usage()
+{
+	cat <<EOF
+Usage: gdal-config [OPTIONS]
+Options:
+	[--prefix[=DIR]]
+	[--libs]
+	[--dep-libs]
+	[--cflags]
+	[--datadir]
+	[--version]
+	[--ogr-enabled]
+	[--formats]
+EOF
+	exit $1
+}
+
+if test $# -eq 0; then
+	usage 1 1>&2
+fi
+
+case $1 in 
+  --libs)
+    echo $CONFIG_LIBS
+    ;;
+
+  --dep-libs)
+    echo $CONFIG_DEP_LIBS
+    ;;
+
+  --cflags)
+    echo $CONFIG_CFLAGS
+    ;;
+
+  --datadir)
+    echo $CONFIG_DATA
+    ;;
+
+  --prefix)
+    echo $CONFIG_PREFIX
+    ;;
+
+  --version)
+    echo $CONFIG_VERSION
+    ;;
+
+  --ogr-enabled)
+    echo $CONFIG_OGR_ENABLED
+    ;;
+
+  --formats)
+    echo $CONFIG_FORMATS
+    ;;
+
+  *)
+    usage 1 1>&2
+    ;;
+
+esac
