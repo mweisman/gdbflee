@@ -44,6 +44,7 @@ def upload_file():
                     gdb_name = os.path.splitext(gdb)[0]
                     gdb_location = os.path.join(gdb_path, gdb)
                     fgdb.convert(gdb_location, gdb_name, format, out_path)
+            return 'static/output/%s' % store_key
             os.mkdir('static/output/%s' % store_key)
             out_zip = zipfile.ZipFile('static/output/%s/out.zip' % store_key, 'w')
             for root, dirs, files in os.walk(out_path):
