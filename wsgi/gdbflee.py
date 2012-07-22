@@ -17,7 +17,7 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-@app.route("/", methods=['POST', 'GET'])
+@app.route("/freeme", methods=['POST'])
 def upload_file():
     if request.method == 'POST':
         store_key = sha1(str(uuid1())).hexdigest()
@@ -55,12 +55,7 @@ def upload_file():
             
             return render_template('done.html', store_key=store_key)
         else:
-            return json.dumps({"status": "error",
-                "message": "bad zip",
-                "filename": filename,
-                    "path": path})
-            
-    return render_template('index.html')
+            return render_template('error.html')
 
 if __name__ == "__main__":
     app.run()
