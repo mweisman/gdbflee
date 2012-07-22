@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <link charset="utf-8" href="/static/styles/styles.css" media="screen" rel="stylesheet" type="text/css">
+    <title>GDB Flee | Your got out</title>
+  </head>
+  <body>
+    <div role='container'>
+      <article>
+        <hgroup>
+          <h1>GDB Flee</h1>
+          <h2>About GDB Flee</h2>
+        </hgroup>
+        <h3>Why</h3>
+        <h4>
+          <p>
+            <a href='/'>GDB Flee</a> is a simple web app, thrown together in a single weekend when my wife was out of town, for helping people get their data out of <a href='http://www.esri.com/software/arcgis/geodatabase/single-user-geodatabase'>File Geodatabases</a> and into open and usable formats. The <a href='http://resources.arcgis.com/content/geodatabases/10.0/file-gdb-download'>File Geodatabase API</a> when mixed with the <a href='http://www.gdal.org/ogr/'>OGR</a> <a href='http://www.gdal.org/ogr/drv_filegdb.html'>plugin</a> may make this fairly simple, but getting this up and running locally can be quite difficult for people not used to compiling their own software or using the command line.
+          </p>
+        </h4>
+        <h3>How</h3>
+        <h4>
+          <p>
+            Pretty simple actually. A small c library uses <a href='http://www.gdal.org/ogr/'>OGR</a> and the <a href='http://resources.arcgis.com/content/geodatabases/10.0/file-gdb-download'>File Geodatabase API</a> to do all the data conversion heavy lifting. The library uses the <a href='http://docs.python.org/c-api/'>Python C API</a> to allow python scripts to hook into it. A very lightweight <a href='http://flask.pocoo.org'>flask</a> application handles the web side of things and calls into the c library with data uploaded by a user. The whole thing is running on Red Hat's <a href='https://openshift.redhat.com/app/'>OpenShift</a> cloud platform, which makes it extremely easy to mix native code with python.
+          </p>
+          <p>  
+            Take a look at the <a href='https://github.com/mweisman/gdbflee'>source</a> over on <a href='https://github.com/'>GitHub</a> for more details.
+          </p>
+        </h4>
+        <footer>
+          <p>
+            Created by
+            <a href='http://twitter.com/mweisman/'>Michael Weisman</a>
+          </p>
+          <p>
+            <a href='/about'>About this app</a>
+          </p>
+        </footer>
+      </article>
+    </div>
+    <a class='ribbon' href='https://github.com/mweisman/gdbflee' id='github'>
+      <img alt='Fork me on GitHub' src='/static/images/ribbon.png' />
+    </a>
+  </body>
+</html>

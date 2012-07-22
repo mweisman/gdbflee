@@ -21,10 +21,16 @@ def allowed_file(filename):
 def index():
     return render_template('index.html')
 
+@app.route("/about", methods=['GET'])
+def about():
+    return render_template('about.html')
 
-@app.route("/freeme", methods=['POST'])
+
+@app.route("/freeme", methods=['POST', 'GET'])
 def upload_file():
-    if request.method == 'POST':
+    if request.method == 'GET':
+        return render_template('index.html')
+    else if request.method == 'POST':
         store_key = sha1(str(uuid1())).hexdigest()
         file = request.files['file']
         format = request.values['format']
