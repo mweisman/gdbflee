@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from flask import Flask, request, redirect, send_from_directory, url_for
+from flask import Flask, request, redirect, send_from_directory, url_for, render_template
 from hashlib import sha1
 from uuid import uuid1
 from werkzeug import secure_filename
@@ -53,45 +53,14 @@ def upload_file():
                         zipfile.ZIP_DEFLATED)
             out_zip.close()
             
-            return '''
-            <!doctype html>
-            <title>All Done</title>
-            <h1><a href=\"/static/output/%s/out.zip\">Your data has fled!</a></h1>
-            <br />
-            <br />
-            <a href=\"/\">Free some more data</a>
-            ''' % store_key
+            return render_template('done.html', store_key=store_key)
         else:
             return json.dumps({"status": "error",
                 "message": "bad zip",
                 "filename": filename,
                     "path": path})
             
-    return '''
-    <!doctype html>
-    <title>Your data wants out</title>
-    <h1>Upload a zipped File Geodatabase. Your data wants to flee.</h1>
-    <form action="" method=post enctype=multipart/form-data>
-      <p><input type=file name=file>
-      <br />
-         <select name="format"> 
-         <option value="GeoJSON">GeoJSON</option>
-         <option value="KML">KML</option>
-         <option value="ESRI Shapefile">Shapefile</option>
-         <option value="PGDump">PostGIS Database Dump</option>
-         <option value="GeoRSS">GeoRSS</option>
-         <option value="CSV">CSV (attributes only)</option>
-         <option value="GML">GML</option>
-         <option value="MapInfo File">MapInfo File</option>
-         <option value="DGN">DGN</option>
-         <option value="Geoconcept">Geoconcept</option>
-         </select>
-         <br />
-         <br />
-         <input type=submit value="Free this Data!">
-         </p>
-    </form>
-    '''
+    return render_template('index.html')
 
 if __name__ == "__main__":
     app.run()
