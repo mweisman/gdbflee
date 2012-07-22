@@ -46,7 +46,7 @@ def upload_file():
                     fgdb.convert(gdb_location, gdb_name, format, out_path)
             try:
                 os.mkdir('static/output/%s' % store_key)
-            except, Exception as e:
+            except Exception as e:
                 return e.strerror
             out_zip = zipfile.ZipFile('static/output/%s/out.zip' % store_key, 'w')
             for root, dirs, files in os.walk(out_path):
