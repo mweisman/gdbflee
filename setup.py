@@ -14,5 +14,11 @@ setup(name='gdbflee',
 setup (name='fgdb',
       version='0.1',
       description='Light wrapper around GDAL/FileGDB for freeing data.',
-      ext_modules=[Extension('fgdb', sources = [repo_path + '/fgdb/src/fgdb.c'], libraries = ['gdal'])]
+      ext_modules=[Extension(
+      'fgdb',
+       sources=[repo_path + '/fgdb/src/fgdb.c'],
+       include_dirs=[repo_path + '/libs/include'],
+       library_dirs=[repo_path + '/libs/lib'],
+       libraries=['gdal'])
+       ]
      )
