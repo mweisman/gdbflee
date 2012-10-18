@@ -65,7 +65,7 @@ static PyObject* fgdb_convert(PyObject *self, PyObject *args, PyObject *keywds) 
         OGRFeatureDefnH fd = OGR_L_GetLayerDefn(layer);
         
         OGRLayerH out_layer = OGR_DS_CreateLayer(out_ds, OGR_L_GetName(layer), 
-            OGR_L_GetSpatialRef(layer), OGR_L_GetGeomType(layer), NULL);
+            OGR_L_GetSpatialRef(layer), OGR_L_GetGeomType(layer), "ENCODING=UTF-8");
         
         int iField;
         for(iField = 0; iField < OGR_FD_GetFieldCount(fd); iField++) {
