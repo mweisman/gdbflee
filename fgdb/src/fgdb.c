@@ -3,6 +3,7 @@
 
 // Returns Exceptions to python when things go wrong
 static PyObject *fgdb_error;
+static char *encoding = "ENCODING=UTF-8";
 
 static PyObject* fgdb_convert(PyObject *self, PyObject *args, PyObject *keywds) {
     // Fetch inputs from python
@@ -65,7 +66,7 @@ static PyObject* fgdb_convert(PyObject *self, PyObject *args, PyObject *keywds) 
         OGRFeatureDefnH fd = OGR_L_GetLayerDefn(layer);
         
         OGRLayerH out_layer = OGR_DS_CreateLayer(out_ds, OGR_L_GetName(layer), 
-            OGR_L_GetSpatialRef(layer), OGR_L_GetGeomType(layer), "ENCODING=UTF-8");
+            OGR_L_GetSpatialRef(layer), OGR_L_GetGeomType(layer), &encoding);
         
         int iField;
         for(iField = 0; iField < OGR_FD_GetFieldCount(fd); iField++) {
