@@ -1,6 +1,6 @@
 # GDB Flee
 
-## A simple web service for helping your data flee File Geodatabaes.
+## A simple web service for helping your data flee File Geodatabases.
 
 ### Example
 If you just want to help your data flee, give [this app][app] a try. The app's [about][about] page gives some more details about the how and why of this.
